@@ -151,7 +151,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootsnap (>= 1.4.2)
+  bootsnap (>= 1.4.8)
   byebug
   faker
   listen (~> 3.2)
