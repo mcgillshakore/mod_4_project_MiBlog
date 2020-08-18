@@ -4,7 +4,7 @@ class SearchBox extends React.Component {
 render () {
     return(
         <div>
-            <p>1</p>
+           
         </div>
     )
 }
