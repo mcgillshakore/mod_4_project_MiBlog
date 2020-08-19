@@ -2,7 +2,7 @@ import React from 'react';
 import BlogForm from './BlogForm'
 import SearchBox from './SearchBox'
 import BlogList from './BlogList'
-
+import Header from './Header'
 import "bootstrap/dist/css/bootstrap.min.css";
 
  import './App.css';
@@ -13,7 +13,8 @@ class App extends React.Component{
   
   state = {
     blogs: [],
-    comments: []
+    comments: [], 
+    searchField: ''
   }
 
 
@@ -56,16 +57,42 @@ class App extends React.Component{
     this.fetchBlogs ()
      this.fetchComments()
    }
+
+   onSearchChange = (e) => {
+     console.log(e.target.value)
+     this.setState({
+       searchField: e.target.value
+     })
+   }
+
+   sortBlogs = (e) => {
+  
+     this.setState({
+       blogs: this.state.blogs.sort((a,b) => { return (a.title.localeCompare(b.title))} )
+     })
+   }
  
   render() {
+
+    const filterBlogs = this.state.blogs.filter(blog => {
+      return blog.title.toLowerCase().includes(
+      this.state.searchField.toLocaleLowerCase()
+    )})
     return (
       <div className="app">
-        <div className="sidebar">
-          <button>Show/hide new poem form</button>
-          {false && <BlogForm addBlog={this.addBlog}/>}
+
+        <div>
+        <Header />
         </div>
-        <SearchBox />
-        <BlogList  blogs={this.state.blogs} />
+        <BlogForm />
+        <SearchBox 
+        onSearchChange={this.onSearchChange} 
+        sortBlogs = {this.sortBlogs}
+        />
+        <div>
+        <BlogList blogs={filterBlogs} />
+        </div>
+
       </div>
     );
   }
