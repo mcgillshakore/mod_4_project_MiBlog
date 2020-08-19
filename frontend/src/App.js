@@ -10,15 +10,29 @@ import "bootstrap/dist/css/bootstrap.min.css";
 class App extends React.Component{
 
   state = {
-    blogs: []
+    blogs: [],
+    comments: []
   }
 
   componentDidMount () {
+    this.fetchBlogs ()
+    this.fetchComments()
+  }
+
+  fetchBlogs = () => {
     fetch('http://localhost:3000/blogs')
     .then(res => res.json())
     .then( blogs => this.setState({
       blogs: blogs
     }))
+  } 
+
+  fetchComments = () => {
+    fetch('http://localhost:3000/comments')
+     .then(res => res.json())
+     .then(comments => this.setState({
+       comments: comments
+     }))
   }
 
   addBlog = (blog) => {
@@ -38,11 +52,12 @@ class App extends React.Component{
   render() {
     return (
       <div className="App">
-   <BlogForm addBlog={this.addBlog}/>
+        <div className="sidebar">
+        <button>Show/hide new poem form</button>
+        {false && <BlogForm addBlog={this.addBlog}/>}
         <SearchBox />
         <BlogList  blogs={this.state.blogs} />
-      
-     
+        </div>
       </div>
     );
   }
