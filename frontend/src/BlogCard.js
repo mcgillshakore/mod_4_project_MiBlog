@@ -17,7 +17,7 @@ class BlogCard extends React.Component {
 
     return (
       <div className="card">
-          <img  onClick={this.handleShowDialog}  className = "image" src={this.props.blog.image_url} alt={this.props.blog.name}></img>
+          <img  onClick={this.handleShowDialog}  className = "image" src={this.props.blog.attributes.image_url} alt={this.props.blog.attributes.name}></img>
         {this.state.isOpen && (
           <dialog
             className="dialog"
@@ -27,18 +27,19 @@ class BlogCard extends React.Component {
           >
             <img
               className="image"
-              src={this.props.blog.image_url}
+              src={this.props.blog.attributes.image_url}
               onClick={this.handleShowDialog}
-              alt={this.props.blog.title}
+              alt={this.props.blog.attributes.title}
             />
-                 <h3>{this.props.blog.title}</h3>
-                 <p>{this.props.blog.content}</p>
+                 <h3>{this.props.blog.attributes.title}</h3>
+                 <p>{this.props.blog.attributes.content}</p>
           </dialog>
         )} 
         
-        <h3>{this.props.blog.title}</h3>
-        <p>{this.props.blog.content}</p>
-        <p>{this.props.a}</p>
+        <h3>{this.props.blog.attributes.title}</h3>
+        <p>{this.props.blog.attributes.content}</p>
+        {/* <p>{this.props.blog.relationships.lik}</p> */}
+      
   
         {/* <button>Mark as read</button> <span></span>
         <button>Like</button> <br></br> <br></br> */}

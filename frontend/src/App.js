@@ -27,8 +27,8 @@ class App extends React.Component{
     fetch('http://localhost:3000/blogs')
     .then(res => res.json())
     .then( blogs => this.setState({
-      blogs: blogs
-    }))
+      blogs: blogs.data
+    }) )
   } 
 
   fetchComments = () => {
@@ -53,11 +53,6 @@ class App extends React.Component{
       .then(blog => console.log(blog))
   }
 
-  componentDidMount () {
-    this.fetchBlogs ()
-     this.fetchComments()
-   }
-
    onSearchChange = (e) => {
      console.log(e.target.value)
      this.setState({
@@ -66,18 +61,20 @@ class App extends React.Component{
    }
 
    sortBlogs = (e) => {
-  
      this.setState({
-       blogs: this.state.blogs.sort((a,b) => { return (a.title.localeCompare(b.title))} )
+       blogs: this.state.blogs.sort((a,b) => { return (a.attributes.title.localeCompare(b.attributes.title))} )
      })
    }
  
   render() {
 
+
     const filterBlogs = this.state.blogs.filter(blog => {
-      return blog.title.toLowerCase().includes(
+      return blog.attributes.title.toLowerCase().includes(
       this.state.searchField.toLocaleLowerCase()
     )})
+  
+
     return (
       <div className="app">
 
