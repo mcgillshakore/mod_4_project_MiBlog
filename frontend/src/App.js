@@ -16,6 +16,7 @@ class App extends React.Component{
     comments: []
   }
 
+
   componentDidMount () {
     this.fetchBlogs ()
     this.fetchComments()
@@ -51,12 +52,17 @@ class App extends React.Component{
       .then(blog => console.log(blog))
   }
 
+  componentDidMount () {
+    this.fetchBlogs ()
+     this.fetchComments()
+   }
+ 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <div className="sidebar">
-        <button>Show/hide new poem form</button>
-        {false && <BlogForm addBlog={this.addBlog}/>}
+          <button>Show/hide new poem form</button>
+          {false && <BlogForm addBlog={this.addBlog}/>}
         </div>
         <SearchBox />
         <BlogList  blogs={this.state.blogs} />
