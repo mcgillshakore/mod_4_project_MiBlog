@@ -6,7 +6,8 @@ import Header from './Header'
 import "bootstrap/dist/css/bootstrap.min.css";
 
  import './App.css';
- const url = 'http://localhost:3000/blogs'
+ const blogUrl = 'http://localhost:3000/blogs'
+ const commentUrl = 'http://localhost:3000/comments'
 
 class App extends React.Component{
 
@@ -24,7 +25,7 @@ class App extends React.Component{
   }
 
   fetchBlogs = () => {
-    fetch('http://localhost:3000/blogs')
+    fetch(blogUrl)
     .then(res => res.json())
     .then( blogs => this.setState({
       blogs: blogs
@@ -32,7 +33,7 @@ class App extends React.Component{
   } 
 
   fetchComments = () => {
-    fetch('http://localhost:3000/comments')
+    fetch(commentUrl)
      .then(res => res.json())
      .then(comments => this.setState({
        comments: comments
@@ -40,7 +41,7 @@ class App extends React.Component{
   }
 
   addBlog = (blog) => {
-    fetch(url, {
+    fetch(blogUrl, {
       method: 'POST',
       headers: {'Content-type': "application/json"},
       body: JSON.stringify({
