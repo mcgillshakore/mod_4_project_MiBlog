@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
 
     def index
         blogs = Blog.all
-        render json: BlogSerializers.new(blogs)
+        render json: BlogSerializers.new(blog)
     end
 
     def show
