@@ -6,15 +6,22 @@ import Header from './Header'
 import "bootstrap/dist/css/bootstrap.min.css";
 
  import './App.css';
+ const url = 'http://localhost:3000/blogs'
 
 class App extends React.Component{
 
-  state ={
+  
+  state = {
     blogs: [],
     comments: [], 
     searchField: ''
   }
 
+
+  componentDidMount () {
+    this.fetchBlogs ()
+    this.fetchComments()
+  }
 
   fetchBlogs = () => {
     fetch('http://localhost:3000/blogs')
@@ -30,6 +37,20 @@ class App extends React.Component{
      .then(comments => this.setState({
        comments: comments
      }))
+  }
+
+  addBlog = (blog) => {
+    fetch(url, {
+      method: 'POST',
+      headers: {'Content-type': "application/json"},
+      body: JSON.stringify({
+        title: blog.name,
+        image: blog.image,
+        content: blog.content,
+        Likes: 0
+      })
+    }).then(resp => resp.json())
+      .then(blog => console.log(blog))
   }
 
   componentDidMount () {
@@ -59,6 +80,7 @@ class App extends React.Component{
     )})
     return (
       <div className="app">
+
         <div>
         <Header />
         </div>
@@ -70,6 +92,7 @@ class App extends React.Component{
         <div>
         <BlogList blogs={filterBlogs} />
         </div>
+
       </div>
     );
   }
