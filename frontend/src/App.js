@@ -2,6 +2,7 @@ import React from 'react';
 import BlogForm from './BlogForm'
 import SearchBox from './SearchBox'
 import BlogList from './BlogList'
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
  import './App.css';
@@ -9,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component{
 
+  
   state = {
     blogs: [],
     comments: []
@@ -55,9 +57,9 @@ class App extends React.Component{
         <div className="sidebar">
         <button>Show/hide new poem form</button>
         {false && <BlogForm addBlog={this.addBlog}/>}
+        </div>
         <SearchBox />
         <BlogList  blogs={this.state.blogs} />
-        </div>
       </div>
     );
   }
