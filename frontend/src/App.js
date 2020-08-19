@@ -1,8 +1,11 @@
 import React from 'react';
+import { Switch, Route } from "react-router-dom";
 import BlogForm from './BlogForm'
 import SearchBox from './SearchBox'
 import BlogList from './BlogList'
 import Header from './Header'
+import Nav from './Nav'
+import Home from './Home'
 import "bootstrap/dist/css/bootstrap.min.css";
 
  import './App.css';
@@ -80,9 +83,16 @@ class App extends React.Component{
       <div className="app">
 
         <div>
-        <Header />
+          <Header />
         </div>
-        <BlogForm />
+        <div>
+          <Nav />
+        </div>
+          <Switch>
+          <Route path="/" component={Home}/>
+          <Route path="/blog-form" component={BlogForm}/>
+        </Switch>
+       
         <SearchBox 
         onSearchChange={this.onSearchChange} 
         sortBlogs = {this.sortBlogs}
