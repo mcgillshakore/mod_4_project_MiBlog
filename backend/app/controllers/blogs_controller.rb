@@ -2,18 +2,18 @@ class BlogsController < ApplicationController
 
     def index
         blogs = Blog.all
-        render json: BlogSerializers.new(blogs)
+        render json: BlogSerializer.new(blogs)
     end
 
     def show
         blog = Blog.find_by(id: params[:id])
-        render json: BlogSerializers.new(blog)
+        render json: BlogSerializer.new(blog)
     end
 
     def create
         blog = Blog.new(blog_params)
         blog.save
-        render json: BlogSerializers.new(blog)
+        render json: BlogSerializer.new(blog)
     end
 
     private
