@@ -53,11 +53,6 @@ class App extends React.Component{
       .then(blog => console.log(blog))
   }
 
-  componentDidMount () {
-    this.fetchBlogs ()
-     this.fetchComments()
-   }
-
    onSearchChange = (e) => {
      console.log(e.target.value)
      this.setState({
