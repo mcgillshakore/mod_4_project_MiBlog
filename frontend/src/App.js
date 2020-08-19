@@ -6,14 +6,21 @@ import BlogList from './BlogList'
 import "bootstrap/dist/css/bootstrap.min.css";
 
  import './App.css';
+ const url = 'http://localhost:3000/blogs'
 
 class App extends React.Component{
 
-  state ={
+  
+  state = {
     blogs: [],
     comments: []
   }
 
+
+  componentDidMount () {
+    this.fetchBlogs ()
+    this.fetchComments()
+  }
 
   fetchBlogs = () => {
     fetch('http://localhost:3000/blogs')
@@ -31,6 +38,20 @@ class App extends React.Component{
      }))
   }
 
+  addBlog = (blog) => {
+    fetch(url, {
+      method: 'POST',
+      headers: {'Content-type': "application/json"},
+      body: JSON.stringify({
+        title: blog.name,
+        image: blog.image,
+        content: blog.content,
+        Likes: 0
+      })
+    }).then(resp => resp.json())
+      .then(blog => console.log(blog))
+  }
+
   componentDidMount () {
     this.fetchBlogs ()
      this.fetchComments()
@@ -41,11 +62,10 @@ class App extends React.Component{
       <div className="app">
         <div className="sidebar">
           <button>Show/hide new poem form</button>
-          {false && <BlogForm />}
+          {false && <BlogForm addBlog={this.addBlog}/>}
         </div>
         <SearchBox />
-        <BlogList blogs={this.state.blogs} />
-       
+        <BlogList  blogs={this.state.blogs} />
       </div>
     );
   }
