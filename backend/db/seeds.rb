@@ -27,7 +27,7 @@ c2 = Comment.create(user_id: u2.id, blog_id: b2.id, content: Faker::Quote.famous
 c3 = Comment.create(user_id: u3.id, blog_id: b3.id, content: Faker::Quote.famous_last_words)
 c4 = Comment.create(user_id: u4.id, blog_id: b4.id, content: Faker::Quote.famous_last_words)
 
-l1 = Like.create(user_id: u1.id, blog_id: b1.id)
-l2 = Like.create(user_id: u4.id, blog_id: b4.id)
-l3 = Like.create(user_id: u3.id, blog_id: b3.id)
-l4 = Like.create(user_id: u2.id, blog_id: b2.id)
+l1 = Like.create(likes: 0, user_id: u1.id, blog_id: b1.id)
+l2 = Like.create(likes: 0, user_id: u4.id, blog_id: b4.id)
+l3 = Like.create(likes: 0, user_id: u3.id, blog_id: b3.id)
+l4 = Like.create(likes: 0, user_id: u2.id, blog_id: b2.id)
