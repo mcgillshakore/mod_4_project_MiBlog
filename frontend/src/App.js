@@ -1,11 +1,10 @@
 import React from 'react';
-import { Switch, Route } from "react-router-dom";
 import BlogForm from './BlogForm'
 import SearchBox from './SearchBox'
 import BlogList from './BlogList'
 import Header from './Header'
-
-import Commentlist from './CommentList'
+import Nav from './Nav'
+// import Commentlist from './CommentList'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
@@ -14,6 +13,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 import BlogCard from './BlogCard';
  const url = 'http://localhost:3000/blogs'
+ const commentUrl = 'http://localhost:3000/comments'
 
 class App extends React.Component{
 
@@ -25,7 +25,7 @@ class App extends React.Component{
   }
 
   fetchBlogs = () => {
-    fetch(blogUrl)
+    fetch(url)
     .then(res => res.json())
     .then( blogs => this.setState({
       blogs: blogs.data
@@ -62,20 +62,6 @@ class App extends React.Component{
       blogs: [...this.state.blogs, blogAdded]
     }))
   }
-
-  // addBlog = (blog) => {
-  //   fetch(url, {
-  //     method: 'POST',
-  //     headers: {'Content-type': "application/json"},
-  //     body: JSON.stringify({
-  //       title: blog.name,
-  //       image: blog.image,
-  //       content: blog.content,
-  //       Likes: 0
-  //     })
-  //   }).then(resp => resp.json())
-  //     .then(blog => console.log(blog))
-  // }
 
    onSearchChange = (e) => {
      console.log(e.target.value)

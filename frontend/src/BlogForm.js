@@ -65,6 +65,7 @@ class BlogForm extends React.Component {
                     </label><br/><br/>
                         <input type="submit" onClick={this.handleClick} value="Create Blog" className="blog-form-submit"/>
                 </form>
+                <br/>
                 <Link to="/blogs" >Go To Main Page</Link>
 
             </div>
