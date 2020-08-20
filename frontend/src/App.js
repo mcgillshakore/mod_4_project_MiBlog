@@ -5,7 +5,7 @@ import BlogList from './BlogList'
 import Header from './Header'
 import Nav from './Nav'
 // import Commentlist from './CommentList'
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 
