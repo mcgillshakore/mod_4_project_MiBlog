@@ -118,3 +118,7 @@ button:hover {
   max-height: calc(100vh - 200px);
     overflow-y: auto;
 }
+
+.title:hover{
+background-color: #515DA2;
+}

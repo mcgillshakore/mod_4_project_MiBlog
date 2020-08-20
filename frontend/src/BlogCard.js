@@ -12,8 +12,9 @@ class BlogCard extends React.Component {
   }
 
   render() {   
-
-    if (this.props.blog === undefined){ return (<h1>{}</h1>)}
+     
+  console.log(this.props)
+  if (this.props.blog === undefined) {return (<h1>{}</h1>)}
 
     return (
       <div className="card">
@@ -36,13 +37,8 @@ class BlogCard extends React.Component {
           </dialog>
         )} 
         
-        <h3>{this.props.blog.attributes.title}</h3>
-        <p>{this.props.blog.attributes.content}</p>
-        {/* <p>{this.props.blog.relationships.lik}</p> */}
-      
-  
-        {/* <button>Mark as read</button> <span></span>
-        <button>Like</button> <br></br> <br></br> */}
+        <h3 className="title" >{this.props.blog.attributes.title}</h3>
+        <p>{this.props.blog.attributes.content}</p>      
         <textarea rows="4" cols="50" name="comment" form="usrform">
          Enter text here...</textarea>
       </div>
