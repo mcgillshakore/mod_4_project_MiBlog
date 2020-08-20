@@ -1,37 +1,74 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+
+
+
 class BlogForm extends React.Component {
-  
-    handleSubmit = (event) => {
-        event.preventDefault()
-        let form = event.currentTarget
-        console.log(event.target.title.value)
-        let blog = ({
-          title: event.target.title.value,
-          image: event.target.image.value,
-          content: event.target.content.value
+
+    state = {
+        title: '',
+        image_url: '',
+        content: '',
+        likes: 0
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
         })
-        this.props.addBlog(blog)
-        form.reset()
+    }
+
+    handleClick = (e) => {
+        console.log("click")
+        e.preventDefault()
+        this.props.createBlog(this.state)
+        this.setState({
+            title: '',
+            image_url: '',
+            content: ''
+        })
+    }
+  
+    // handleSubmit = (event) => {
+    //     event.preventDefault()
+    //     let form = event.currentTarget
+    //     console.log(event.target.title.value)
+    //     let blog = ({
+    //       title: event.target.title.value,
+    //       image: event.target.image.value,
+    //       content: event.target.content.value
+    //     })
+    //     this.props.addBlog(blog)
+    //     //form.reset()
+    //   }
+     
+      handleLink = () => {
+          this.props.history.push("/blogs")
       }
+
     render () {
         return(
             <div>
-                <form className="add-blog-form" onSubmit={this.handleSubmit}>
+                <form className="add-blog-form" onSubmit={(e) =>{ this.handleSubmit(e)
+                this.handleLink()
+                }
+                }>
                     <h2>Create A New Blog</h2>
                     <label>
                         Title<br/><br/>
-                        <input type="text" name="title" placeholder="Enter a Blog's Title..." className="blog-form-text"/>
+                        <input type="text" onChange={this.handleChange}  name="title" placeholder="Enter a Blog's Title..." className="blog-form-text"/>
                     </label><br/><br/>
                     <label>
                         Image<br/><br/>
-                         <input type="text" name="image" placeholder="Enter a Image URL..." className="blog-form-text"/>
+                         <input type="text" onChange={this.handleChange}  name="image_url" placeholder="Enter a Image URL..." className="blog-form-text"/>
                     </label><br/><br/>
                     <label>
-                        Blog<br/><br/>
-                        <textarea  name="content" placeholder="Write your Blog..." className="blog-form-text"/>
+                        Content<br/><br/>
+                        <textarea  name="content" onChange = {this.handleChange}  placeholder="Write your Blog..." className="blog-form-text"/>
                     </label><br/><br/>
-                        <input type="submit" value="Create Blog" className="blog-form-submit"/>
+                        <input type="submit" onClick={this.handleClick} value="Create Blog" className="blog-form-submit"/>
                 </form>
+                <Link to="/blogs" >Go To Main Page</Link>
             </div>
         )
     }
