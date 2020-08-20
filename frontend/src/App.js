@@ -88,11 +88,6 @@ class App extends React.Component{
         <div>
           <Nav />
         </div>
-          <Switch>
-          <Route path="/" component={Home}/>
-          <Route path="/blog-form" component={BlogForm}/>
-        </Switch>
-       
         <SearchBox 
         onSearchChange={this.onSearchChange} 
         sortBlogs = {this.sortBlogs}

@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from './Header'
+import Nav from './Nav'
 class BlogForm extends React.Component {
   
     handleSubmit = (event) => {
@@ -16,22 +18,25 @@ class BlogForm extends React.Component {
     render () {
         return(
             <div>
-                <form className="add-blog-form" onSubmit={this.handleSubmit}>
-                    <h2>Create A New Blog</h2>
-                    <label>
-                        Title<br/><br/>
-                        <input type="text" name="title" placeholder="Enter a Blog's Title..." className="blog-form-text"/>
-                    </label><br/><br/>
-                    <label>
-                        Image<br/><br/>
-                         <input type="text" name="image" placeholder="Enter a Image URL..." className="blog-form-text"/>
-                    </label><br/><br/>
-                    <label>
-                        Blog<br/><br/>
-                        <textarea  name="content" placeholder="Write your Blog..." className="blog-form-text"/>
-                    </label><br/><br/>
-                        <input type="submit" value="Create Blog" className="blog-form-submit"/>
-                </form>
+                 <Header/>
+                 <Nav/>
+                <div>
+                    <form className="add-blog-form" onSubmit={this.handleSubmit}>
+                        <label>
+                            Title<br/><br/>
+                            <input type="text" name="title" placeholder="Enter a Blog's Title..." className="blog-form-text"/>
+                        </label><br/><br/>
+                        <label>
+                            Image<br/><br/>
+                            <input type="text" name="image" placeholder="Enter a Image URL..." className="blog-form-text"/>
+                        </label><br/><br/>
+                        <label>
+                            Blog<br/><br/>
+                            <textarea  name="content" placeholder="Write your Blog..." className="blog-form-text"/>
+                        </label><br/><br/>
+                            <input type="submit" value="Create Blog" className="blog-form-submit"/>
+                    </form>
+                </div>
             </div>
         )
     }
