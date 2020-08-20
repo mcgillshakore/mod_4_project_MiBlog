@@ -1,8 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-
-
-
 class BlogForm extends React.Component {
 
     state = {
@@ -69,6 +66,7 @@ class BlogForm extends React.Component {
                         <input type="submit" onClick={this.handleClick} value="Create Blog" className="blog-form-submit"/>
                 </form>
                 <Link to="/blogs" >Go To Main Page</Link>
+
             </div>
         )
     }

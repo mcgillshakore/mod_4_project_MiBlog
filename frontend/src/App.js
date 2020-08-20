@@ -1,14 +1,17 @@
 import React from 'react';
+import { Switch, Route } from "react-router-dom";
 import BlogForm from './BlogForm'
 import SearchBox from './SearchBox'
 import BlogList from './BlogList'
 import Header from './Header'
+
 import Commentlist from './CommentList'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 
  import './App.css';
+
 import BlogCard from './BlogCard';
  const url = 'http://localhost:3000/blogs'
 
@@ -22,7 +25,7 @@ class App extends React.Component{
   }
 
   fetchBlogs = () => {
-    fetch('http://localhost:3000/blogs')
+    fetch(blogUrl)
     .then(res => res.json())
     .then( blogs => this.setState({
       blogs: blogs.data
@@ -35,12 +38,13 @@ class App extends React.Component{
   }
 
   fetchComments = () => {
-    fetch('http://localhost:3000/comments')
+    fetch(commentUrl)
      .then(res => res.json())
      .then(comments => this.setState({
        comments: comments.data
      }))
   }
+
 
   createBlog = (newBlog) => {
     fetch('http://localhost:3000/blogs', {
@@ -99,9 +103,14 @@ class App extends React.Component{
       <BrowserRouter>
       <div className="app">
         <div>
-        <Header />
+          <Header />
         </div>
+        <div>
+          <Nav />
+        </div>
+
         {/* <BlogForm />
+
         <SearchBox 
         onSearchChange={this.onSearchChange} 
         sortBlogs = {this.sortBlogs}
