@@ -8,12 +8,13 @@ render () {
            onChange={this.props.onSearchChange}
            className="search"  type="search" placeholder="search blogs "/> <span></span>
 
-           <select onChange={(e) => this.props.sortBlogs(e.target.value)}  name="select-blogs" id="selection">
+           <select onChange={(e) => this.props.sortBlogs(e.target.value)}   name="select-blogs" id="selection">
            <option value="none">----</option>
-           <option value="alphabetic">Alphabetic</option>
+           <option  value="alphabetic">Alphabetic</option>
+
            <option value="all">All Blogs</option>
            </select>
-           
+
         </div>
     )
 }

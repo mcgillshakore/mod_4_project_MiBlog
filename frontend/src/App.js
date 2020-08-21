@@ -17,7 +17,7 @@ class App extends React.Component{
   state = {
     blogs: [],
     comments: [], 
-    searchField: ''
+    searchField: '',
   }
 
   fetchBlogs = () => {
@@ -84,23 +84,24 @@ class App extends React.Component{
    sortBlogs = (e) => {
      this.setState({
        blogs: this.state.blogs.sort((a,b) => { return (a.attributes.title.localeCompare(b.attributes.title))} )
-     })
-   }
- 
+     })}
+
+   
+     
   render() {
 
     const filterBlogs = this.state.blogs.filter(blog => {
       return blog.attributes.title.toLowerCase().includes(
       this.state.searchField.toLocaleLowerCase()
     )})
-  
+
     return (
       <div className="app">
        <Header /> 
        <BrowserRouter>
        <Nav history={this.props.location} />
        <Route  path="/blogs/new" render={(routerProps) => <BlogForm {...routerProps} createBlog={this.createBlog} history={this.props.location} /> }/>
-       <Route exact path="/blogs" render={(routerProps) => <SearchBox onSearchChange={this.onSearchChange} sortBlogs = {this.sortBlogs}/>} />
+       <Route exact path="/blogs" render={(routerProps) => <SearchBox onSearchChange={this.onSearchChange}   sortBlogs = {this.sortBlogs}/>} />
        <Route exact path="/blogs" render={(routerProps) => <BlogList {...routerProps} blogs={filterBlogs} deleteBlog={this.deleteBlog} />} />
        <Route path="/blogs/:id"  component={BlogCard}  />
        </BrowserRouter>
