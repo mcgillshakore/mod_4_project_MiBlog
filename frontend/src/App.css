@@ -33,15 +33,16 @@ body {
   text-align: center;
   border: grey solid 1px;
   padding: 1rem;
-  width: 20rem;
-  height: 30rem;
+  width: 15rem;
+  height: 20rem;
   display: inline-grid;
   margin: 1rem 2rem;
-  box-shadow: 3px 4px #e04b52
+  box-shadow: 3px 4px #515DA2
 }
 .image{
   height:10rem;
-  width: 10rem;
+  width: 15rem;
+  position: center;
 }
 
 .toy-avatar {
@@ -52,7 +53,7 @@ body {
 
 button {
   position: relative;
-  background-color: #e04b52;
+  background-color:  #515DA2;
   border: none;
   border-radius: 5px;
   height: 3rem;
@@ -69,8 +70,8 @@ button {
 
 button:hover {
   background-color: whitesmoke;
-  border: #e04b52 solid 1px;
-  color: #e04b52;
+  border:  #515DA2 solid 1px;
+  color:  #515DA2
 }
 
 .container {
@@ -104,7 +105,6 @@ button:hover {
   color: #e04b52;
 }
 
-
 .input-text {
   border-radius: 5px;
   height: 2rem;
@@ -113,12 +113,108 @@ button:hover {
   font-family: monospace;
   margin: 3px;
 }
-
 .dialog{
   max-height: calc(100vh - 200px);
     overflow-y: auto;
 }
-
 .title:hover{
 background-color: #515DA2;
 }
+.dialog{
+   display: block;
+   width: 600px;
+   max-width: 100%;
+   height: 400px;
+   max-height: 100%;
+   position: fixed;
+   z-index: 100;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);  
+   background: white;
+   box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.123);
+}
+.delete{
+  color: white
+}
+button{
+  color: #515DA2
+}
+
+.searchbar{
+  width: 100%;
+    text-align:center;
+}
+#selection{
+  width: 150px;
+        height: 30px;
+        border: 1px solid #999;
+        font-size: 18px;
+        color: #1c87c9;
+        background-color: #eee;
+        border-radius: 5px;
+        box-shadow: 4px 4px #ccc;
+}
+.search{
+  width: 220px;
+  height: 30px;
+  border: 1px solid #999;
+  font-size: 18px;
+  color: #1c87c9;
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 4px 4px #ccc;
+}
+.blog-form-text{
+  width: 300px;
+  border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+  
+}
+.add-blog-form{
+  text-align: center;
+}
+.blog-form-submit{
+  background-color: whitesmoke;
+  border:  #515DA2 solid 1px;
+  color:  #515DA2;
+  position: relative;
+  background-color:  #515DA2;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: max-content;
+  color: whitesmoke;
+  font-size: 18px;
+  justify-self: center;
+}
+.link, .link2{
+  text-align: center;
+  font-size: 200%;
+}
+.link:link {
+  color: red;
+}
+.link:visited {
+  color: green;
+}
+.link:hover {
+  color: hotpink;
+}
+.link:active {
+  color: blue;
+}
+
+
+

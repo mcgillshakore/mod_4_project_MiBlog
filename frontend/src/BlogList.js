@@ -8,7 +8,11 @@ class BlogList extends React.Component {
     return (
       <div className="blog-list">
         {
-          this.props.blogs.map( blog => <BlogCard  blog={blog} key={blog.id}/>)
+          this.props.blogs.map( blog => <BlogCard  
+            blog={blog} 
+            key={blog.id}
+            deleteBlog = {this.props.deleteBlog}
+            />)
         }
       </div>
     );

@@ -8,7 +8,7 @@ render () {
            onChange={this.props.onSearchChange}
            className="search"
            type="search"
-           placeholder="search blogs"
+           placeholder="search blogs "
            /> <span></span>
 
            <select onChange={(e) => this.props.sortBlogs(e.target.value)}  name="select-blogs" id="selection">

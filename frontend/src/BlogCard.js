@@ -11,9 +11,13 @@ class BlogCard extends React.Component {
     })
   }
 
+  handleDelete = () => {
+    this.props.deleteBlog(this.props.blog)
+  }
+
   render() {   
      
-  console.log(this.props)
+
   if (this.props.blog === undefined) {return (<h1>{}</h1>)}
 
     return (
@@ -22,7 +26,7 @@ class BlogCard extends React.Component {
         {this.state.isOpen && (
           <dialog
             className="dialog"
-            style={{ position: 'absolute', left:'50%', width: '100%'}}
+            // style={{ position:  }}
             open
             onClick={this.handleShowDialog}
           >
@@ -39,8 +43,7 @@ class BlogCard extends React.Component {
         
         <h3 className="title" >{this.props.blog.attributes.title}</h3>
         <p>{this.props.blog.attributes.content}</p>      
-        <textarea rows="4" cols="50" name="comment" form="usrform">
-         Enter text here...</textarea>
+         <button className="delete" onClick={this.handleDelete} >DELETE</button>
       </div>
     );
   }

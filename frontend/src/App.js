@@ -48,18 +48,33 @@ class App extends React.Component{
 
   createBlog = (newBlog) => {
     fetch('http://localhost:3000/blogs', {
-      method: "POST",
-      headers: { "Content-type" : "application/json"},
+      method:"POST",
+      headers:{ "Content-type":"application/json"},
       body: JSON.stringify({
-        name: newBlog.title,
-        image_url: newBlog.image_url,
-        content: newBlog.content,
-        likes: 0
+        title:newBlog.title,
+        image_url:newBlog.image_url,
+        content:newBlog.content,
+        user_id:5,
+        likes:0
       })
     })
     .then(res => res.json())
-    .then(blogAdded => this.setState({
-      blogs: [...this.state.blogs, blogAdded]
+    .then(blogAdded => console.log(blogAdded))
+    //   this.setState({
+    //   blogs: [...this.state.blogs, blogAdded]
+    // }))
+  }
+
+  deleteBlog = (currentBlog) => {
+    fetch(`http://localhost:3000/blogs/${currentBlog.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+    .then(res => res.json())
+    .then(blogDeleted => this.setState({
+      blogs: this.state.blogs.filter(blog => blog.id !== currentBlog.id)
     }))
   }
 
@@ -77,23 +92,21 @@ class App extends React.Component{
    }
  
   render() {
-
-
-    // const filterBlogs = this.state.blogs.filter(blog => {
-    //   return blog.attributes.title.toLowerCase().includes(
-    //   this.state.searchField.toLocaleLowerCase()
-    // )})
-  
-
+    const filterBlogs = this.state.blogs.filter(blog => {
+      return blog.attributes.title.toLowerCase().includes(
+      this.state.searchField.toLocaleLowerCase()
+    )})
+    console.log(this.props)
     return (
-      <BrowserRouter>
+    
       <div className="app">
-        <div>
+        
+        
           <Header />
-        </div>
-        <div>
-          <Nav />
-        </div>
+        
+        
+          {/* <Nav history={this.props.location} /> */}
+        
 
         {/* <BlogForm />
 
@@ -105,12 +118,17 @@ class App extends React.Component{
         <BlogList blogs={filterBlogs} />
         <Commentlist comments={this.state.comments} />
         </div> */}
-        <Route  path="/blogs/new" render={(routerProps) => <BlogForm {...routerProps} createBlog={this.createBlog} /> }/>
+       
+       <BrowserRouter>
+       <Nav history={this.props.location} />
+        <Route  path="/blogs/new" render={(routerProps) => <BlogForm {...routerProps} createBlog={this.createBlog} history={this.props.location} /> }/>
         <Route exact path="/blogs" render={(routerProps) => <SearchBox onSearchChange={this.onSearchChange} sortBlogs = {this.sortBlogs}/>} />
-        <Route exact path="/blogs" render={(routerProps) => <BlogList {...routerProps} blogs={this.state.blogs} />} />
+        <Route exact path="/blogs" render={(routerProps) => <BlogList {...routerProps} blogs={filterBlogs} deleteBlog={this.deleteBlog} />} />
         <Route path="/blogs/:id"  component={BlogCard}  />
+       
+        </BrowserRouter>
       </div>
-      </BrowserRouter>
+   
     );
   }
 }
