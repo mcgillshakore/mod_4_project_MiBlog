@@ -7,6 +7,7 @@ import Nav from './Nav'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import './App.css';
 import BlogCard from './BlogCard';
+import Login from './Login'
 const url = 'http://localhost:3000/blogs'
 const commentUrl = 'http://localhost:3000/comments'
 
@@ -104,6 +105,7 @@ class App extends React.Component{
        <Route exact path="/blogs" render={(routerProps) => <SearchBox onSearchChange={this.onSearchChange}   sortBlogs = {this.sortBlogs}/>} />
        <Route exact path="/blogs" render={(routerProps) => <BlogList {...routerProps} blogs={filterBlogs} deleteBlog={this.deleteBlog} />} />
        <Route path="/blogs/:id"  component={BlogCard}  />
+       <Route exact path="/" component={Login}/>
        </BrowserRouter>
       </div>
     );

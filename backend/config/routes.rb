@@ -5,4 +5,7 @@ resources :blogs
 resources :likes
 resources :comments
 
+post '/login', to:'auth#login'
+get '/check-login', to:'auth#check_loggin'
+get '/logout', to:'auth#logout'
 end
