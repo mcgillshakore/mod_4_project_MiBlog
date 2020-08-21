@@ -7,6 +7,8 @@ const Nav = props => {
         <Link  to="/blogs">Home</Link>
         <span> </span>
         <Link to="/blogs/new">Create Blog</Link>
+        <span> </span>
+        <Link to="/">Logout</Link>
         <br/>
         <br/>
     </div>
