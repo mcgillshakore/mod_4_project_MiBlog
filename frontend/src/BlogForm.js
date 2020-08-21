@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Nav from './Nav'
 class BlogForm extends React.Component {
 
     state = {
@@ -28,6 +29,7 @@ class BlogForm extends React.Component {
 
         return(
             <div>
+                <Nav/>
                 <form className="add-blog-form" onSubmit={(e) =>{ this.handleSubmit(e)}}>
                     <h2>Create A New Blog</h2>
                     <label>

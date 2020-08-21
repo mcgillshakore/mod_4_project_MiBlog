@@ -30,20 +30,20 @@ export function Login(props){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className="add-user-form" onSubmit={handleSubmit}>
             <h1>Login</h1>
             <div>
                 <label>Username</label>
                 <span> </span>
-                <input type="text" value={user.username} onChange={ e => changeUser({ ...user, username: e.target.value })} />
+                <input type="text" value={user.username} onChange={ e => changeUser({ ...user, username: e.target.value })} placeholder="Enter Username..." className="user-form-text"/>
                 <br></br>
                 <br></br>
                 <label>Password</label>
                 <span> </span>
-                <input type="password" value={user.password} onChange={ e => changeUser({ ...user, password: e.target.value })} />
+                <input type="password" value={user.password} onChange={ e => changeUser({ ...user, password: e.target.value })} placeholder="Enter Password..." className="user-form-text"/>
             </div>
             <br></br>
-            <input type="submit" value="Login"/>
+            <input type="submit" value="Login" className="user-form-submit"/>
         </form>
     )
 }
