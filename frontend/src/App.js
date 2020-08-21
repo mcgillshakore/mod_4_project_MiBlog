@@ -4,20 +4,16 @@ import SearchBox from './SearchBox'
 import BlogList from './BlogList'
 import Header from './Header'
 import Nav from './Nav'
-// import Commentlist from './CommentList'
-
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-
-
- import './App.css';
-
+import './App.css';
 import BlogCard from './BlogCard';
- const url = 'http://localhost:3000/blogs'
- const commentUrl = 'http://localhost:3000/comments'
+const url = 'http://localhost:3000/blogs'
+const commentUrl = 'http://localhost:3000/comments'
+
+
 
 class App extends React.Component{
 
-  
   state = {
     blogs: [],
     comments: [], 
@@ -92,43 +88,23 @@ class App extends React.Component{
    }
  
   render() {
+
     const filterBlogs = this.state.blogs.filter(blog => {
       return blog.attributes.title.toLowerCase().includes(
       this.state.searchField.toLocaleLowerCase()
     )})
-    console.log(this.props)
+  
     return (
-    
       <div className="app">
-        
-        
-          <Header />
-        
-        
-          {/* <Nav history={this.props.location} /> */}
-        
-
-        {/* <BlogForm />
-
-        <SearchBox 
-        onSearchChange={this.onSearchChange} 
-        sortBlogs = {this.sortBlogs}
-        />
-        <div>
-        <BlogList blogs={filterBlogs} />
-        <Commentlist comments={this.state.comments} />
-        </div> */}
-       
+       <Header /> 
        <BrowserRouter>
        <Nav history={this.props.location} />
-        <Route  path="/blogs/new" render={(routerProps) => <BlogForm {...routerProps} createBlog={this.createBlog} history={this.props.location} /> }/>
-        <Route exact path="/blogs" render={(routerProps) => <SearchBox onSearchChange={this.onSearchChange} sortBlogs = {this.sortBlogs}/>} />
-        <Route exact path="/blogs" render={(routerProps) => <BlogList {...routerProps} blogs={filterBlogs} deleteBlog={this.deleteBlog} />} />
-        <Route path="/blogs/:id"  component={BlogCard}  />
-       
-        </BrowserRouter>
+       <Route  path="/blogs/new" render={(routerProps) => <BlogForm {...routerProps} createBlog={this.createBlog} history={this.props.location} /> }/>
+       <Route exact path="/blogs" render={(routerProps) => <SearchBox onSearchChange={this.onSearchChange} sortBlogs = {this.sortBlogs}/>} />
+       <Route exact path="/blogs" render={(routerProps) => <BlogList {...routerProps} blogs={filterBlogs} deleteBlog={this.deleteBlog} />} />
+       <Route path="/blogs/:id"  component={BlogCard}  />
+       </BrowserRouter>
       </div>
-   
     );
   }
 }

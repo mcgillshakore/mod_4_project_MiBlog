@@ -34,7 +34,7 @@ body {
   border: grey solid 1px;
   padding: 1rem;
   width: 15rem;
-  height: 20rem;
+  height: auto;
   display: inline-grid;
   margin: 1rem 2rem;
   box-shadow: 3px 4px #515DA2
@@ -134,8 +134,9 @@ background-color: #515DA2;
    background: white;
    box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.123);
 }
-.delete{
-  color: white
+.delete, .read{
+  color: white;
+  width: 100px
 }
 button{
   color: #515DA2

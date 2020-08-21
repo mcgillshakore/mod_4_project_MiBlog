@@ -10,35 +10,25 @@ class BlogForm extends React.Component {
     }
 
     handleChange = (e) => {
-      
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
     handleClick = (e) => {
-     
         this.props.createBlog(this.state)
         this.setState({
             title: '',
             image_url: '',
             content: ''
         })
-        // this.props.history.push("/blogs")
     }
   
-   
-     
-   
-
     render () {
-        console.log(this.props.history)
+
         return(
             <div>
-                <form className="add-blog-form" onSubmit={(e) =>{ this.handleSubmit(e)
-            
-                }
-                }>
+                <form className="add-blog-form" onSubmit={(e) =>{ this.handleSubmit(e)}}>
                     <h2>Create A New Blog</h2>
                     <label>
                         Title<br/><br/>
@@ -58,8 +48,6 @@ class BlogForm extends React.Component {
                 <div className="link2" >
                 <Link to="/blogs" >Go To Main Page</Link>
                 </div>
-              
-
             </div>
         )
     }
